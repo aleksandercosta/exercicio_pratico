@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Página de Componentes</title>
+  <style>
+    /* --- Estilos Globais --- */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+      color: #4a6cff;
+    }
+
+    section {
+      padding: 30px 20px;
+      margin-bottom: 50px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cards-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    /* --- 1. Cartão de Perfil Digital --- */
+    .perfil-card {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 20px;
+      width: 250px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+    }
+
+    .perfil-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid #4a6cff;
+    }
+
+    .perfil-card a {
+      display: block;
+      background-color: #4a6cff;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .perfil-card a:hover {
+      background-color: #364fc7;
+    }
+
+    /* --- 2. Card de Filme/Série --- */
+    .card-filme {
+      width: 250px;
+      height: 420px;
+      background-color: #1f1f1f;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .card-filme img {
+      width: 100%;
+      height: 60%;
+      object-fit: cover;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .card-filme .card-content {
+      padding: 15px;
+    }
+
+    .card-filme h3 {
+      font-size: 20px;
+      margin: 0 0 5px 0;
+    }
+
+    .card-filme p {
+      font-size: 14px;
+      margin: 5px 0;
+      color: #ccc;
+    }
+
+    .card-filme .nota {
+      display: inline-block;
+      background-color: #e50914;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .card-filme .favorito {
+      color: #ffd700;
+      text-shadow: 0 0 6px #ffd700;
+    }
+
+    /* --- 3. Item de To-Do List --- */
+    .tarefa {
+      width: 250px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .tarefa h3 {
+      font-size: 18px;
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+
+    .tarefa p {
+      font-size: 14px;
+      color: #666;
+      margin: 0 0 15px 0;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .status-pendente { background-color: #e74c3c; }
+    .status-progresso { background-color: #f1c40f; color: #333; }
+    .status-concluida { background-color: #2ecc71; }
+
+    .concluida h3 { text-decoration: line-through; color: #999; }
+
+    /* --- 4. Anúncio de Evento --- */
+    .evento {
+      background-image: url('https://via.placeholder.com/800x400.png?text=Workshop+Online');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      color: #fff;
+      padding: 40px 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .evento h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .evento p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+
+    .evento ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 25px 0;
+    }
+
+    .evento ul li {
+      margin: 8px 0;
+      font-size: 15px;
+      background-color: rgba(0,0,0,0.4);
+      padding: 6px 10px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .evento .button {
+      display: inline-block;
+      background-color: #ff4757;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .evento .button:hover {
+      background-color: #e84118;
+    }
+
+    /* --- 5. Depoimentos --- */
+    .depoimento {
+      width: 500px;
+      margin: 0 auto 30px auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .depoimento blockquote {
+      font-style: italic;
+      color: #555;
+      font-size: 16px;
+      margin: 0 0 15px 0;
+      padding-left: 15px;
+      border-left: 4px solid #4a6cff;
+    }
+
+    .depoimento .autor {
+      text-align: right;
+      font-weight: bold;
+      color: #333;
+      margin: 0 0 8px 0;
+    }
+
+    .depoimento .estrelas {
+      color: gold;
+      text-align: right;
+      font-size: 18px;
+    }
+
+    /* --- Responsivo --- */
+    @media (max-width: 768px) {
+      .cards-row { flex-direction: column; align-items: center; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 1. Perfil Digital -->
+  <section>
+    <h2>Perfil Digital</h2>
+    <div class="perfil-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3106/3106921.png" alt="Foto de Perfil">
+      <h3>Seu Nome</h3>
+      <p>Desenvolvedor Front-end 💻 | Criando com paixão</p>
+    <a href="https://github.com/aleksandercosta" target="_blank">
+      <span class="emoji">🐱‍👤</span> GitHub
+    </a>
+    <a href="https://www.linkedin.com" target="_blank">
+      <span class="emoji">💼</span> LinkedIn
+    </a>
+    <a href="https://seuportifolio.com" target="_blank">
+      <span class="emoji">🌐</span> Portfólio
+    </a>
+    </div>
+  </section>
+
+  <!-- 2. Cards de Filmes -->
+  <section>
+    <h2>Cards de Filmes</h2>
+    <div class="cards-row">
+      <div class="card-filme">
+        <img src="https://upload.wikimedia.org/wikipedia/pt/thumb/0/04/Spider-Man_No_Way_Home_soundtrack_cover.jpg/250px-Spider-Man_No_Way_Home_soundtrack_cover.jpg" alt="Filme X">
+        <div class="card-content">
+          <h3>Homem-Aranha: Sem Volta para Casa</h3>
+          <p>2021 • Ação/Fantasia</p>
+          <p class="nota">Nota: 8.2/10</p>
+        </div>
+      </div>
+        <div class="card-filme">
+        <img src="https://upload.wikimedia.org/wikipedia/pt/thumb/e/e4/Furious_7.jpg/250px-Furious_7.jpg" alt="Filme X">
+        <div class="card-content">
+          <h3>Velozes e Furiosos 7</h3>
+          <p>2015 • Ação/Thriller</p>
+          <p class="nota">Nota: 7.1/10</p>
+        </div>
+      </div>
+        <div class="card-filme">
+        <img src="https://static.wikia.nocookie.net/whumpapedia/images/3/3a/John_Wick_%282014%29.jpg" alt="Filme X">
+        <div class="card-content">
+          <h3>John Wick: De Volta ao Jogo</h3>
+          <p>2014 • Ação/Thriller</p>
+          <p class="nota">Nota: 7.5/10</p>
+        </div>
+      </div>
+      <div class="card-filme">
+        <img src="https://upload.wikimedia.org/wikipedia/pt/thumb/8/8a/CentralIntelligencePoster.jpg/250px-CentralIntelligencePoster.jpg" alt="Filme Favorito">
+        <div class="card-content">
+          <h3 class="favorito">Central de Inteligência</h3>
+          <p>2016 • Comédia/Ação</p>
+          <p class="nota">Nota: 6.3/10</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. To-Do List -->
+  <section>
+    <h2>Lista de Tarefas</h2>
+    <div class="cards-row">
+        <div class="tarefa">
+        <h3>Estudar JavaScript</h3>
+        <p>Aprender variáveis, funções e tipos de dados.</p>
+        <span class="status status-pendente">Pendente</span>
+      </div>
+      <div class="tarefa">
+        <h3>Estudar HTML</h3>
+        <p>Revisar as tags básicas e criar uma página simples.</p>
+        <span class="status status-progresso">Em Progresso</span>
+      </div>
+      <div class="tarefa">
+        <h3>Estudar CSS</h3>
+        <p>Praticar seletores e propriedades de estilização.</p>
+        <span class="status status-progresso">Em Progresso</span>
+      </div>
+      <div class="tarefa concluida">
+        <h3>Estudar HTML + CSS</h3>
+        <p>Criar um mini projeto com HTML e CSS juntos.</p>
+        <span class="status status-concluida">Concluída</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Anúncio de Evento -->
+  <section>
+    <h2>Evento Online</h2>
+    <div class="evento">
+      <h1>Workshop de Desenvolvimento Web</h1>
+      <p>📅 25 de Setembro | ⏰ 19h (online)</p>
+      <ul>
+        <li>HTML e CSS na Prática</li>
+        <li>Introdução ao JavaScript</li>
+        <li>Boas Práticas no Front-End</li>
+      </ul>
+      <a href="#" class="button">Inscreva-se Agora!</a>
+    </div>
+  </section>
+
+  <!-- 5. Depoimentos -->
+   <section>
+    <h2>Depoimentos</h2>
+    <div class="depoimento">
+      <blockquote>
+        Aprender programação aqui foi incrível! As aulas práticas me ajudaram a criar meu primeiro site.
+      </blockquote>
+      <p class="autor">— Ana Silva</p>
+      <span class="estrelas">⭐️⭐️⭐️⭐️⭐️</span>
+    </div>
+
+    <div class="depoimento">
+      <blockquote>
+        Os tutoriais de JavaScript me deram confiança para criar meus próprios projetos. Recomendo muito!
+      </blockquote>
+      <p class="autor">— João Pereira</p>
+      <span class="estrelas">⭐️⭐️⭐️⭐️⭐️</span>
+    </div>
+
+    <div class="depoimento">
+      <blockquote>
+        Aprender lógica de programação mudou a forma como resolvo problemas no meu dia a dia.
+      </blockquote>
+      <p class="autor">— Beatriz Costa</p>
+      <span class="estrelas">⭐️⭐️⭐️⭐️⭐️</span>
+    </div>
+
+    <div class="depoimento">
+      <blockquote>
+        Os cursos de front-end me ajudaram a conseguir meu primeiro estágio como desenvolvedor.
+      </blockquote>
+      <p class="autor">— Lucas Martins</p>
+      <span class="estrelas">⭐️⭐️⭐️⭐️⭐️</span>
+    </div>
+  </section>
+</body>
+</html>
